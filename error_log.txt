@@ -1,0 +1,4 @@
+12/03/17
+I was getting a 'Uncaught ReferenceError: webpackJsonp is not defined' error
+Solution: Make sure vendor.js comes before app.js in index.html file
+

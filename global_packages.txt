@@ -1,0 +1,14 @@
+global packages:
++-- @angular/cli@1.4.9
++-- babel-eslint@7.2.3
++-- eslint@4.2.0
++-- express-generator@4.15.0
++-- expressworks@2.0.4
++-- gulp@3.9.1
++-- how-to-npm@2.4.2
++-- learnyounode@3.5.10
++-- mocha@3.5.3
++-- npm-cli@0.1.0
++-- path@0.12.7
++-- UNMET PEER DEPENDENCY webpack@^2.2.0 || ^3.0.0
+`-- webpack-dev-server@2.9.2
