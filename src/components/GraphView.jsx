@@ -5,16 +5,15 @@ import ScatterplotContainer from './ScatterplotContainer';
 import GraphBar from './GraphBar';
 
 const GraphView = () => (
-  <div style={{marginLeft: '50px', backgroundColor: 'white'}}>
+  <div style={{ backgroundColor: 'white' }}>
     <GraphBar>
-      <div style={{marginLeft: '50px'}}>
         <ScatterplotContainer />
-      <div style={{ marginTop: 40 }}>
+      <div style={{ marginTop: 40, marginLeft: 20}}>
           <BarChart />
-      </div>
       </div>
     </GraphBar>
   </div>
 );
 
 export default GraphView;
+
