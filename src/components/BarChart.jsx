@@ -1,89 +1,138 @@
 import React, { Component } from 'react';
-import { scaleLinear } from 'd3-scale';
-import { max } from 'd3-array';
-import { select } from 'd3-selection';
-import { axisBottom, axisLeft } from 'd3-axis';
+import classNames from 'classnames';
+
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import teal from '@material-ui/core/colors/teal';
+import orange from '@material-ui/core/colors/orange';
+
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Grid from '@material-ui/core/Grid';
+
+import productData from './productData.json';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // light: '#66ffd9',
+      light: '#E1E1E0',
+      main: '#05e1a7',
+      dark: '#00ae78',
+      contrastText: '#fff',
+    },
+    secondary: {
+      // light: '#ffbc5e',
+      light: '#E1E1E0',
+      main: '#ff8b2d',
+      dark: '#c65c00',
+      contrastText: '#000',
+    },
+  },
+});
 
 class BarChart extends Component {
-   constructor(props){
-      super(props)
-      this.createBarChart = this.createBarChart.bind(this);
-   }
-   componentDidMount() {
-      this.createBarChart();
-   }
-   componentDidUpdate() {
-      this.createBarChart();
-   }
-   createBarChart() {
-    const node = this.node;
-    const dataMax = max(this.props.data);
+  constructor(props) {
+    super(props)
+  }
 
-    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-    const width = 700- margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+  render() {
+    const { classes } = this.props;
 
-    /*const yScale = scaleLinear()
-       .domain([0, dataMax])
-       .range([0, this.props.size[1]]);*/
+    return (
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <Grid container spacing={8}>
+            <Grid container spacing={8}>
+              <Grid item sm={2}>
+                <div>
+                  <strong>Product</strong>
+                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} class="material-icons">code</i>
+                </div>
+              </Grid>
 
-    const yScale = scaleLinear()
-        .range([height,1])
-        .domain([35,1]);
+              <Grid item sm={4} style={{ borderBottom: '3px solid #ff8b2d', marginRight: 4 }} >
+                <div>
+                  <strong style={{ textAlign: 'left' }}>Discount%</strong>
+                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} class="material-icons">code</i>
+                </div>
+              </Grid>
 
-    const xScale = scaleLinear()
-        .range([0, width + margin.left + (margin.right * 2)])
-        .domain([2400,2210]);
+              <Grid item sm={4} style={{ textAlign: 'right', borderBottom: '3px solid #05E1A7' }}>
+                <div>
+                  <strong>Net Sales</strong>
+                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} class="material-icons">code</i>
+                </div>
+              </Grid>
+            </Grid>
 
-    select(node)
-      .attr("width",width + margin.right + margin.left + margin.right + margin.left + 100)
-      .attr("height",height + margin.top + (margin.bottom * 2));
+            <Grid container spacing={8} style={{ marginTop: 10 }}>
 
-     const xAxis = axisBottom()
-      .scale(xScale);
+              {productData.map(product => (
+                <Grid container key={product.name} spacing={8} >
 
-     const yAxis = axisLeft()
-      .scale(yScale);
-          
-     select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .enter()
-      .append('rect');
+                  <Grid item sm={2} style={{ padding: 0 }}>
+                    <div>{product.name}</div>
+                  </Grid>
 
-    select(node).selectAll("g")
-      .data(this.props.data)
-      .enter().append("g")
-      .attr("transform", function() {
-         return "translate(" + margin.left +"," + margin.top + ")";
-      });
-     
-     select(node).append("circle")
-      .attr("r", 4)
-      .attr("fill", function(d,i) { 
-     
-       
-      });
+                  <Grid item sm={1} style={{ padding: 0, textAlign: 'right' }}>
+                    <div>{`${product.discountPercent}%`}</div>
+                  </Grid>
 
-     select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .exit()
-      .remove();
-     
-    select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .style('fill', '#fe9922')
-      .attr('x', (d,i) => i * 25)
-      .attr('y', d => this.props.size[1] - yScale(d))
-      .attr('height', d => yScale(d))
-      .attr('width', 25);
-   }
-render() {
-      return <svg ref={node => this.node = node}
-      width={500} height={500}>
-      </svg>
-   }
+                  <Grid item sm={3}>
+                    <LinearProgress
+                      color={'secondary'}
+                      key={product.name}
+                      variant="determinate"
+                      value={product.discountPercent * 100 / 15}
+                      // className={classNames('classes.bar', 'classes.primaryColor')}
+                      className={classes.bar}
+                    />
+                  </Grid>
+
+                  <Grid item sm={3}>
+                    <LinearProgress
+                      color={'primary'}
+                      key={product.name}
+                      variant="determinate"
+                      value={(product.netSales / 30000)}
+                      className={classes.bar2}
+                    />
+                  </Grid>
+
+                  <Grid item sm={2} style={{ padding: 0 }}>
+                    <div>{product.netSales.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                  </Grid>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </div>
+      </MuiThemeProvider>
+    )
+  }
 }
-export default BarChart;
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  bar2: {
+    marginBottom: 4,
+    height: 12,
+    marginRight: 20,
+    color: '#05E1A7',
+  },
+  bar: {
+    marginBottom: 4,
+    height: 12,
+    transform: 'scaleX(-1)'
+  },
+});
+
+
+BarChart.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(BarChart);
