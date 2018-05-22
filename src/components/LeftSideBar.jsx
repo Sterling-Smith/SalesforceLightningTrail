@@ -164,7 +164,7 @@ class LeftSideBar extends Component {
         </div>
       }
       </div>
-      <div className="slds-col slds-size_9-of-12">
+      <div className="slds-col slds-size_9-of-12" style={{ marginLeft: 50 }}>
        { selected === 1 &&
         <GraphView />
        }
