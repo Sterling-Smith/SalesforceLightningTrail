@@ -48,7 +48,7 @@ const Dropdown = props => (
 
 const GraphBar = (props) => (
   <div>
-    <div style={{ backgroundColor: '#F3F2F0', marginTop: '10px', padding: '15px'}}>
+    <div style={{ backgroundColor: '#F3F2F0', marginTop: '10px', padding: '15px', marginLeft: 10, marginRight: 33}}>
       <span style={{marginLeft: '10px'}}>Dimensions</span>
       <span style={{marginLeft: '10px'}}>X</span>
       <Dropdown defaultText="Account size" />
