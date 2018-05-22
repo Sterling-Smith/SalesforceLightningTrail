@@ -3,7 +3,8 @@ import React from 'react';
 const feedStyle = {
   backgroundColor: '#F3F2F0',
   margin: '0px 5px 5px 5px',
-  paddingBottom: '100%'
+  paddingBottom: '100%',
+  height: '100%'
 };
 
 const cardStyle = {
@@ -85,3 +86,4 @@ const RightFeed = () => (
 );
 
 export default RightFeed;
+
