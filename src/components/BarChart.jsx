@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import teal from '@material-ui/core/colors/teal';
@@ -85,7 +84,6 @@ class BarChart extends Component {
                       key={product.name}
                       variant="determinate"
                       value={product.discountPercent * 100 / 15}
-                      // className={classNames('classes.bar', 'classes.primaryColor')}
                       className={classes.bar}
                     />
                   </Grid>
