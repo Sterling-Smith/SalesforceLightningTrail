@@ -15,28 +15,47 @@ var carClasses = [
 class ScatterplotContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = {data: []};
   }
 
   componentWillMount() {
-    d3.tsv("mpg.tsv", row, ready.bind(this));
-
-    function row(d) {
-      return {
-        class: d.class,
-        hwy: +d.hwy,
-        displ: +d.displ
-      };
+    const newData = [];
+    for (let i = 0; i < 500; i++) {
+      newData.push({
+        class: '',
+        hwy: Math.floor(Math.random() * 30) + 40,
+        displ: Math.floor(Math.random() * 100000000) + 1,
+      });
+    }
+    for (let i = 0; i < 400; i++) {
+      newData.push({
+        class: '',
+        hwy: Math.floor(Math.random() * 50) + 30,
+        displ: Math.floor(Math.random() * 100000000) + 1,
+      });
     }
 
-    function ready(error, data) {
-      if (error) throw error;
-      this.setState({ data: data });
+    for (let i = 0; i < 200; i++) {
+      newData.push({
+        class: '',
+        hwy: Math.floor(Math.random() * 60) + 20,
+        displ: Math.floor(Math.random() * 100000000) + 1,
+      });
     }
+
+    for (let n = 0; n < 100; n++) {
+      newData.push({
+        class: '',
+        hwy: Math.floor(Math.random() * 100) + 1,
+        displ: Math.floor(Math.random() * 100000000) + 1,
+      });
+    }
+
+    this.setState({ data: newData});
   }
   
   render() {
-    var width = 700;
+    var width = 900;
     var height = 500;
 
     var plots = carClasses.map((carClass, i) => {
@@ -50,10 +69,11 @@ class ScatterplotContainer extends React.Component {
             width={width}
             height={height}
             marginTop="40"
+            marginLeft="40"
             x={d => d.displ}
             y={d => d.hwy}
             r={d => 2}
-            fill={d => "#ddd"}
+            fill={d => '#7F7B76'}
             xDomain={[0, 100000000]}
             yDomain={[0, 100]}
             xTickArguments={[5]}
@@ -90,7 +110,7 @@ function getAnnotations(carClass) {
       <span
         key="1"
         className="axis-label"
-        style={{position: "absolute", left: 567, top: 447, width: 200}}>
+        style={{position: "absolute", left: 768, top: 447, width: 200}}>
         {'Avg account size'}
       </span>
     ),

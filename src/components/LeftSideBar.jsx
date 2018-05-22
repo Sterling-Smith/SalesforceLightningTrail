@@ -1,7 +1,17 @@
-import React from 'react';
+
+import React, {Component} from 'react';
+import GraphView from './GraphView';
+import TempView from './TempView';
 
 const barStyle = {
   backgroundColor: '#F3F2F0',
+  paddingBottom: '473px'
+};
+
+const barStyleClosed = {
+  backgroundColor: '#F3F2F0',
+  paddingBottom: '951px',
+  width: '50px',
 };
 
 const lightTitle = {
@@ -37,7 +47,7 @@ const cardText = {
   height: '40px'
 };
 
-const numberStyle ={
+const numberStyle = {
   float: 'left',
   marginLeft: '26px',
   marginTop: '25px',
@@ -45,7 +55,7 @@ const numberStyle ={
 };
 
 const Card = props => (
-  <article className="slds-tile slds-media" style={props.cardStyle}>
+  <article className="slds-tile slds-media" style={props.cardStyle} onClick={() => props.onClick(props.value)}>
     <img style={numberStyle} src={props.selected} width="24px" height="24px" />
     <div className="slds-media__body">
       <div className="slds-tile__detail" style={{marginTop: '0px'}}>
@@ -57,31 +67,115 @@ const Card = props => (
   </article>
 );
 
-const LeftSideBar = () => (
-<div
-  className="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open"
-  aria-hidden="false"
-  style={barStyle}
->
-  <div className="slds-panel__body">
-    <span style={lightTitle}>DIAGNOSIS </span>
-    <img style={{float: 'right'}} src="/assets/left_back.png" width="17px" height="17px" />
-  </div>
-  <Card cardText="Margin Waterfall" cardStyle={cardStyleDeselected} selected="/assets/deselected_1.png"/>
-  <Card cardText="Cloud" cardStyle={cardStyleSelected} selected="/assets/selected_2.png"/>
-  <Card cardText="Segmentation" cardStyle={cardStyleDeselected} selected="/assets/deselected_3.png"/>
-  <Card cardText="Playbook" cardStyle={cardStyleDeselected} selected="/assets/deselected_4.png"/>
-  <Card cardText="Discretion dashboard" cardStyle={cardStyleDeselected} selected="/assets/deselected_5.png"/>
-  <div
-    className="slds-panel__body"
-    style={{
-    height: '44px', backgroundColor: '#F3F2F0', marginTop: '2px', paddingBottom: '0px'
-  }}
-  >
-    <span style={lightTitleMiddle}>PRICE SETTING </span>
-  </div>
-  <Card cardText="Grid price setting" cardStyle={cardStyleDeselected} selected="/assets/deselected_6.png"/>
-</div>
-);
+class LeftSideBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: 1,
+      panelClosed: false,
+    };
+
+    this.handleSelected = this.handleSelected.bind(this);
+    this.togglePanel = this.togglePanel.bind(this);
+  }
+
+  handleSelected(value) {
+    this.setState({selected : value});
+  }
+
+  togglePanel() {
+    const { panelClosed } = this.state;
+    this.setState({panelClosed : !panelClosed});
+  }
+
+ render() {
+  const { selected, panelClosed } = this.state;
+
+  return (
+    <div  className="slds-grid slds-gutters">
+      <div className="slds-col slds-size_3-of-12">
+      <div
+        className={
+          panelClosed ? "slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-closed" :
+            "slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open"}
+        aria-hidden="false"
+        style={barStyle}
+      >
+        <div className="slds-panel__body">
+          <span style={lightTitle}>DIAGNOSIS </span>
+          <img onClick={this.togglePanel} style={{float: 'right'}} src="/assets/left_back.png" width="17px" height="17px" />
+        </div>
+        <Card 
+          onClick={this.handleSelected}
+          value={0}
+          cardText="Margin Waterfall"
+          cardStyle={selected === 0 ? cardStyleSelected : cardStyleDeselected}
+          selected={selected === 0 ? '/assets/selected_1.png' : '/assets/deselected_1.png'}
+        />
+        <Card 
+          onClick={this.handleSelected}
+          value={1}
+          cardText="Cloud"
+          cardStyle={selected === 1 ? cardStyleSelected : cardStyleDeselected}
+        selected={selected === 1 ? '/assets/selected_2.png' : '/assets/deselected_2.png'}
+        />
+        <Card 
+          onClick={this.handleSelected}
+          value={2}
+          cardText="Segmentation"
+          cardStyle={selected === 2 ? cardStyleSelected : cardStyleDeselected}
+          selected={selected === 2 ? '/assets/selected_3.png' : '/assets/deselected_3.png'}
+        />
+        <Card 
+          onClick={this.handleSelected}
+          value={3}
+          cardText="Playbook"
+          cardStyle={selected === 3 ? cardStyleSelected : cardStyleDeselected}
+          selected={selected === 3 ? '/assets/selected_4.png' : '/assets/deselected_4.png'}
+        />
+        <Card 
+          onClick={this.handleSelected}
+          value={4}
+          cardText="Discretion dashboard"
+          cardStyle={selected === 4 ? cardStyleSelected : cardStyleDeselected}
+          selected={selected === 4 ? '/assets/selected_5.png' : '/assets/deselected_5.png'}
+        />
+        <div
+          className="slds-panel__body"
+          style={{
+          height: '44px', backgroundColor: '#F3F2F0', marginTop: '2px', paddingBottom: '0px'
+        }}
+        >
+        <span style={lightTitleMiddle}>PRICE SETTING </span>
+        </div>
+        <Card
+          onClick={this.handleSelected}
+          value={5}
+          cardText="Grid price setting"
+          cardStyle={selected === 5 ? cardStyleSelected : cardStyleDeselected}
+          selected={selected === 5 ? '/assets/selected_6.png' : '/assets/deselected_6.png'}
+        />
+      </div>
+      { panelClosed &&
+        <div>
+          <div className="slds-panel__body" style={barStyleClosed}>
+            <img onClick={this.togglePanel} style={{float: 'right', transform: "scaleX(-1)"}} src="/assets/left_back.png" width="17px" height="17px" />
+          </div>
+        </div>
+      }
+      </div>
+      <div className="slds-col slds-size_9-of-12">
+       { selected === 1 &&
+        <GraphView />
+       }
+       { selected != 1 &&
+        <TempView />
+       }
+      </div>
+    </div>
+    );
+  }
+}
+
 
 export default LeftSideBar;

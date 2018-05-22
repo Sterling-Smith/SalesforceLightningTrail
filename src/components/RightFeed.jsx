@@ -3,6 +3,7 @@ import React from 'react';
 const feedStyle = {
   backgroundColor: '#F3F2F0',
   margin: '0px 5px 5px 5px',
+  paddingBottom: '100%'
 };
 
 const cardStyle = {

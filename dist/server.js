@@ -1,18 +1,13 @@
 'use strict';
 
 var express = require('express');
-var mongoose = require('mongoose');
 var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 
-//mongoose.connect('mongodb://localhost/local');
-//mongoose.connect(process.env.MONGOLAB_URI);
-mongoose.Promise = global.Promise;
-
 app.use(bodyParser.json());
 
-var db = mongoose.connection;
+//const db = mongoose.connection;
 
 app.use(express.static(path.join(__dirname, '../static')));
 

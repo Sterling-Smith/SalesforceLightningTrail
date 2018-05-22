@@ -1,8 +1,7 @@
-import React from "react";
-import * as d3 from "d3";
-import Points from "./Points";
-import Axis from "./Axis";
-import PropTypes from 'prop-types';
+import React from 'react';
+import * as d3 from 'd3';
+import Points from './Points';
+import Axis from './Axis';
 
 class Scatterplot extends React.Component {
   render() {
@@ -40,30 +39,25 @@ class Scatterplot extends React.Component {
     var bottomAxisTransform = `translate(0,${innerHeight})`;
  
     return (
-      <svg 
+      <svg
         className="Scatterplot"
         width={this.props.width}
         height={this.props.height}>
-
         <g transform={innerTransform}>
-
           <Points data={pointsData} />
-
           <g transform={bottomAxisTransform}>
-            <Axis 
+            <Axis
               orientation="bottom"
               scale={xScale}
               format={null}
               tickArguments={this.props.xTickArguments}/>
           </g>
-          
-          <Axis 
+          <Axis
             orientation="left"
             scale={yScale}
             format={d => d + "%"}
-            tickArguments={this.props.yTickArguments} />  
+            tickArguments={this.props.yTickArguments} />
         </g>
-
       </svg>
     );
   }
@@ -99,7 +93,7 @@ Scatterplot.defaultProps = {
   x: d => d.x,
   y: d => d.y,
   r: d => 3,
-  fill: d => "#000",
+  fill: d => "#000000",
   stroke: d => "none",
   xTickArguments: [],
   yTickArguments: []

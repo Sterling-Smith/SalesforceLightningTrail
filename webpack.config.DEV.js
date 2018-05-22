@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   entry: {
     app: './src/index.js',
-    vendor: ['react', 'react-dom', 'whatwg-fetch', 'react-bootstrap', 'babel-polyfill', 'react-router',
+    vendor: ['react', 'react-dom', 'whatwg-fetch', 'babel-polyfill', 'react-router',
       'react-router-bootstrap', 'react-router-dom'],
   },
   output: {

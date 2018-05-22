@@ -16,6 +16,7 @@ const titleText = {
   color: 'white',
   padding: '17px 0px 17px 95px',
   fontSize: '20px',
+  marginLeft: '-46px'
 };
 
 const NavBar = (props) => (
@@ -23,8 +24,7 @@ const NavBar = (props) => (
     <div className="slds-global-header_container" style={{backgroundColor: '#575652'}}>
       <div className="slds-grid slds-gutters">
         <div className="slds-col">
-          {/*<object type="image/svg+xml" width="30%" height="30%" data="chevronleft_sm.svg" class="logo">
-          </object>*/}
+          <img style={{ marginLeft: '23px', marginBottom: '6px'}} src="/assets/chevronleft_single.png" width="20px" height="20px" />
           <span style={titleText}> Discount guidelines Q4 2017</span>
           <button className="slds-button slds-button_inverse" style={navButtonStyleSingle}>EDIT</button>
         </div>

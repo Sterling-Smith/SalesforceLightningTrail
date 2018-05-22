@@ -9,7 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   entry: {
     app: './src/index.js',
-    vendor: ['react', 'react-dom', 'whatwg-fetch', 'react-bootstrap', 'babel-polyfill', 'react-router',
+    vendor: ['react', 'react-dom', 'whatwg-fetch','babel-polyfill', 'react-router',
              'react-router-bootstrap', 'react-router-dom', 'axios', 'react-redux',
              'redux', 'redux-thunk'],
   },
@@ -42,6 +42,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
+        exclude: /(node_modules|bower_compontents)/,
         query: {
           presets: ['react', 'es2015']
         }
