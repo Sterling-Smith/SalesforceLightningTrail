@@ -8,7 +8,7 @@ const MainView = () => (
     <div className="slds-col slds-size_9-of-12">
       <LeftSideBar />
     </div>
-    <div className="slds-col slds-size_2-of-12" style={{paddingRight: '0px', width: '23%'}}>
+    <div className="slds-col slds-size_2-of-12" style={{paddingRight: '0px', width: '21%'}}>
       <RightFeed />
     </div>
     <div className="slds-col slds-size_2-of-12"
@@ -26,3 +26,4 @@ const MainView = () => (
 );
 
 export default MainView;
+
