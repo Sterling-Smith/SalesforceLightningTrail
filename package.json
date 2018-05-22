@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/sterlingssmith/SalesforceLightningTrail.git#readme",
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
     "@salesforce-ux/design-system": "^2.6.0",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
