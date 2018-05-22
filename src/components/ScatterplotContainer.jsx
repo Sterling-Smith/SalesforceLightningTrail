@@ -55,8 +55,8 @@ class ScatterplotContainer extends React.Component {
   }
   
   render() {
-    var width = 900;
-    var height = 500;
+    var width = 702;
+    var height = 390;
 
     var plots = carClasses.map((carClass, i) => {
 
@@ -102,7 +102,7 @@ function getAnnotations(carClass) {
       <span
         key="0"
         className="chart-title"
-        style={{position: "absolute", left: 25, top: 10, width: 200}}>
+        style={{position: "absolute", left: 25, top: 10, width: 200, color: '#A4A09B' }}>
         {'Discount %'}
       </span>
     ),
@@ -110,7 +110,7 @@ function getAnnotations(carClass) {
       <span
         key="1"
         className="axis-label"
-        style={{position: "absolute", left: 768, top: 447, width: 200}}>
+        style={{position: "absolute", left: 615, top: 390, width: 200, color: '#A4A09B'}}>
         {'Avg account size'}
       </span>
     ),
