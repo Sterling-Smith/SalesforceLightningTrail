@@ -1,0 +1,82 @@
+[
+	{
+		"name": "Product family 1",
+		"discountPercent": 12.3,
+		"netSales": 2734493
+	},
+	{
+		"name": "Product family 2",
+		"discountPercent": 10.1,
+		"netSales": 2528394
+	},
+	{
+		"name": "Product family 3",
+		"discountPercent": 9,
+		"netSales": 2478239
+	},
+	{
+		"name": "Product family 4",
+		"discountPercent": 10.5,
+		"netSales": 2284730
+	},
+	{
+		"name": "Product family 5",
+		"discountPercent": 9.2,
+		"netSales": 2183473
+	},
+	{
+		"name": "Product family 6",
+		"discountPercent": 6,
+		"netSales": 2018452
+	},
+	{
+		"name": "Product family 7",
+		"discountPercent": 7.6,
+		"netSales": 1843900
+	},
+	{
+		"name": "Product family 8",
+		"discountPercent": 2,
+		"netSales": 1634289
+	},
+	{
+		"name": "Product family 9",
+		"discountPercent": 4,
+		"netSales": 1598032
+	},
+	{
+		"name": "Product family 10",
+		"discountPercent": 9.2,
+		"netSales": 1524645
+	},
+	{
+		"name": "Product family 11",
+		"discountPercent": 5.2,
+		"netSales": 1324989
+	},
+	{
+		"name": "Product family 12",
+		"discountPercent": 5.1,
+		"netSales": 1312243
+	},
+	{
+		"name": "Product family 13",
+		"discountPercent": 4.9,
+		"netSales": 1243846
+	},
+	{
+		"name": "Product family 14",
+		"discountPercent": 6.6,
+		"netSales": 1177665
+	},
+	{
+		"name": "Product family 15",
+		"discountPercent": 12.3,
+		"netSales": 1329576
+	},
+	{
+		"name": "Product family 16",
+		"discountPercent": 10.1,
+		"netSales": 1293494
+	}
+]
