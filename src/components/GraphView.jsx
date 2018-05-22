@@ -9,6 +9,9 @@ const GraphView = () => (
     <GraphBar>
       <div style={{marginLeft:'40px'}}>
         <ScatterplotContainer />
+        <div style={{ marginTop: 40 }}>
+          <BarChart />
+        </div>
       </div>
     </GraphBar>
   </div>
