@@ -46,21 +46,21 @@ class BarChart extends Component {
               <Grid item sm={2}>
                 <div>
                   <strong>Product</strong>
-                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} class="material-icons">code</i>
+                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} className="material-icons">code</i>
                 </div>
               </Grid>
 
               <Grid item sm={4} style={{ borderBottom: '3px solid #ff8b2d', marginRight: 4 }} >
                 <div>
                   <strong style={{ textAlign: 'left' }}>Discount%</strong>
-                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} class="material-icons">code</i>
+                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} className="material-icons">code</i>
                 </div>
               </Grid>
 
               <Grid item sm={4} style={{ textAlign: 'right', borderBottom: '3px solid #05E1A7' }}>
                 <div>
                   <strong>Net Sales</strong>
-                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} class="material-icons">code</i>
+                  <i style={{ transform: 'rotate(90deg)', fontSize: 16, marginLeft: 6 }} className="material-icons">code</i>
                 </div>
               </Grid>
             </Grid>
@@ -71,11 +71,11 @@ class BarChart extends Component {
                 <Grid container key={product.name} spacing={8} >
 
                   <Grid item sm={2} style={{ padding: 0 }}>
-                    <div>{product.name}</div>
+                    <div className="slds-text-heading_small" style={{ color: '#A4A09B', fontSize: '.82rem' }}>{product.name}</div>
                   </Grid>
 
                   <Grid item sm={1} style={{ padding: 0, textAlign: 'right' }}>
-                    <div>{`${product.discountPercent}%`}</div>
+                    <div className="slds-text-heading_small" style={{ color: '#A4A09B', fontSize: '.82rem' }}>{`${product.discountPercent}%`}</div>
                   </Grid>
 
                   <Grid item sm={3}>
@@ -99,7 +99,7 @@ class BarChart extends Component {
                   </Grid>
 
                   <Grid item sm={2} style={{ padding: 0 }}>
-                    <div>{product.netSales.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                    <div className="slds-text-heading_small" style={{ color: '#A4A09B', fontSize: '.82rem' }}>{product.netSales.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                   </Grid>
                 </Grid>
               ))}
