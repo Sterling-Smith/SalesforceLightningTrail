@@ -11320,7 +11320,8 @@ a.slds-button--inverse:focus {
 
 .slds-docked-composer.slds-is-closed .slds-docked-composer__body,
 .slds-docked-composer.slds-is-closed .slds-docked-composer__footer {
-  display: none; }
+  display: none;
+}
 
 .slds-docked-composer + .slds-docked-composer {
   margin-left: 1.5rem; }
