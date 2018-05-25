@@ -1,47 +1,62 @@
+'use strict';
+
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
     app: './src/index.js',
-    vendor: ['react', 'react-dom', 'whatwg-fetch', 'babel-polyfill', 'react-router',
-      'react-router-bootstrap', 'react-router-dom'],
+    vendor: ['react', 'react-dom', 'whatwg-fetch','babel-polyfill', 'react-router',
+             'react-router-bootstrap', 'react-router-dom', 'axios', 'react-redux',
+             'redux', 'redux-thunk'],
   },
   output: {
     path: path.resolve(__dirname, 'static'),
-    filename: 'app.bundle.js',
+    filename: '[name].js'
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'})
+    new webpack.optimize.CommonsChunkPlugin({names: ['vendor', 'manifest']}),
+    new ExtractTextPlugin('bundle.[chunkhash].css'),
+    new HtmlWebpackPlugin({
+      template: './static/index.html'}),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ],
   devServer: {
     port: 8080,
     contentBase: 'static',
     proxy: {
       '/': {
-        target: 'http://localhost:3000',
-      },
-    },
+        target: 'http://localhost:3000'
+      }
+    }
   },
-  devtool: 'source-map',
+
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
+        exclude: /(node_modules|bower_compontents)/,
         query: {
-          presets: ['react', 'es2015', 'stage-0'],
-        },
+          presets: ['react', 'es2015']
+        }
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader'],
+        loaders: ExtractTextPlugin.extract({fallback:'style-loader',
+        use: 'css-loader!sass-loader!resolve-url-loader'})
       },
-     {
+      {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
         ]
       }
     ],
