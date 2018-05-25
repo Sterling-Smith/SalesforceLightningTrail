@@ -63,7 +63,7 @@ class ScatterplotContainer extends React.Component {
       var annotations = getAnnotations(carClass);
 
       return (
-        <div key={i} className="plot" style={{position: "relative"}}>
+        <div key={i} className="plot" style={{position: "relative", zIndex: 1 }}>
 
           <Scatterplot
             width={width}

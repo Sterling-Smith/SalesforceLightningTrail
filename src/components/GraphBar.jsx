@@ -24,7 +24,7 @@ const Dropdown = props => (
       <span className="slds-combobox_container" style={{display: 'inline-block', margin: '0px 10px'}}>
         <span className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
           <span className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-            <input type="text" style={{ width: '140px', height:'10px'}}className="slds-input slds-combobox__input" id="combobox-id-1" aria-controls="listbox-id-1" autoComplete="off" role="textbox" placeholder={props.defaultText} readonly="" />
+            <input type="text" style={{ width: '140px', height:'10px'}}className="slds-input slds-combobox__input" id="combobox-id-1" aria-controls="listbox-id-1" autoComplete="off" role="textbox" placeholder={props.defaultText} readOnly="" />
             <span className="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
               <img style={{marginRight: '0px'}} src="/assets/down_120.png" width="15px" height="15px" />
             </span>

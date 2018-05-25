@@ -8,12 +8,12 @@ const MainView = () => (
     <div className="slds-col slds-size_9-of-12">
       <LeftSideBar />
     </div>
-    <div className="slds-col slds-size_2-of-12" style={{paddingRight: '0px', width: '21%'}}>
+    <div className="slds-col slds-size_3-of-12" style={{paddingRight: '0px' }}>
       <RightFeed />
     </div>
-    <div className="slds-col slds-size_2-of-12"
+{/*     <div className="slds-col slds-size_1-of-12"
       style={{
-        backgroundColor: '#ECEbE9', paddingLeft: '0px', marginLeft: '-5px', width: '50px'
+        backgroundColor: '#ECEbE9', paddingLeft: '0px', marginLeft: '-5px'
       }}>
       <div>
         <img src="/assets/Tab_selected.png" width="50px" height="50px" />
@@ -21,7 +21,7 @@ const MainView = () => (
       <div>
         <img src="/assets/Tab_deselected.png" width="50px" height="50px" />
       </div>
-    </div>
+    </div> */}
   </div>
 );
 
